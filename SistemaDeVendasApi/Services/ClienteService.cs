@@ -18,19 +18,24 @@ namespace SistemaDeVendasApi.Services
             return await _clienteRepository.GetAllAsync();
         }
 
-        public async Task AdicionarClienteAsync(Cliente cliente)
+        public async Task<Cliente> AdicionarClienteAsync(Cliente cliente)
         {
-            await _clienteRepository.AdicionarAsync(cliente);
+            return await _clienteRepository.AdicionarAsync(cliente);
         }
 
-        public async Task EditarClienteAsync(Cliente cliente)
+        public async Task<Cliente> EditarClienteAsync(int id, Cliente cliente)
         {
-            await _clienteRepository.EditarAsync(cliente);
+            return await _clienteRepository.EditarAsync(id, cliente);
         }
 
         public async Task<Cliente?> GetClienteByIdAsync(int id) 
         {
             return await _clienteRepository.GetByIdAsync(id);
+        }
+
+        public async Task RemoverClienteByIdAsync(int id)
+        {
+            await _clienteRepository.ApagarAsync(id);
         }
     }
 }

@@ -1,6 +1,16 @@
 @SistemaDeVendasApi_HostAddress = http://localhost:5133
 
-GET {{SistemaDeVendasApi_HostAddress}}/weatherforecast/
+GET http://localhost:5133/clientes
 Accept: application/json
+
+###
+
+POST http://localhost:5133/clientes
+Content-Type: application/json
+
+{
+    "Id": 0,
+    "Nome": "Apenas Silas"
+}
 
 ###

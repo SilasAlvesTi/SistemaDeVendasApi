@@ -19,7 +19,6 @@ namespace SistemaDeVendasApi.Models.Cliente
         {
             Id = id;
             Nome = nome;
-            CreatedAt = createdAt;
         }
     }
 }

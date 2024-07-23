@@ -36,5 +36,31 @@ namespace SistemaDeVendasApi.EndPoints.ClienteEndPoints
             }
             return new ActionResult<Cliente>(cliente);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Cliente>> PostCliente([FromBody] Cliente cliente)
+        {
+            var clienteReadDto = await _clienteService.AdicionarClienteAsync(cliente);
+            return new ActionResult<Cliente>(cliente);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Cliente>> PutCliente(int id, [FromBody] Cliente cliente)
+        {
+            if (id != cliente.Id)
+            {
+                return new BadRequestResult();
+            }
+            var clienteReadDto = await _clienteService.EditarClienteAsync(id, cliente);
+            return new ActionResult<Cliente>(cliente);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCliente(int id)
+        {
+           await _clienteService.RemoverClienteByIdAsync(id);
+            return NoContent();
+        }
+
     }
 }

@@ -16,19 +16,33 @@ namespace SistemaDeVendasApi.Repositories
             _context = context;
         }
 
-        public Task AdicionarAsync(Cliente entidade)
+        public async Task<Cliente> AdicionarAsync(Cliente cliente)
         {
-            throw new NotImplementedException();
+            await _context.Clientes.AddAsync(cliente);
+            await _context.SaveChangesAsync();
+            return cliente;
         }
 
-        public Task ApagarAsync(Cliente entidade)
+        public async Task ApagarAsync(int id)
         {
-            throw new NotImplementedException();
+            var clienteDoBanco = await _context.Clientes.Where(cliente => cliente.Id == id).FirstAsync();
+            if (clienteDoBanco is null)
+            {
+                return;
+            }
+            _context.Clientes.Remove(clienteDoBanco);
+            await _context.SaveChangesAsync();
         }
 
-        public Task EditarAsync(Cliente entidade)
+        public async Task<Cliente> EditarAsync(int id, Cliente cliente)
         {
-            throw new NotImplementedException();
+            var clienteDoBanco = await _context.Clientes.Where(cliente => cliente.Id == id).FirstAsync();
+
+            clienteDoBanco.Nome = cliente.Nome;
+            
+            await _context.SaveChangesAsync();
+
+            return clienteDoBanco;
         }
 
         public async Task<IEnumerable<Cliente>> GetAllAsync()

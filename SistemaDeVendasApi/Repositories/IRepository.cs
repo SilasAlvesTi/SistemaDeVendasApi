@@ -4,8 +4,8 @@
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T?> GetByIdAsync(int id);
-        Task AdicionarAsync(T entidade);
-        Task EditarAsync(T entidade);
-        Task ApagarAsync(T entidade);
+        Task<T> AdicionarAsync(T entidade);
+        Task<T> EditarAsync(int id, T entidade);
+        Task ApagarAsync(int id);
     }
 }
