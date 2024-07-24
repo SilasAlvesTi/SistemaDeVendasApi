@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SistemaDeVendasApi.Data;
-using SistemaDeVendasApi.Models.Cliente;
+using SistemaDeVendasApi.Models.ClienteModels;
 using System;
 
 namespace SistemaDeVendasApi.Repositories

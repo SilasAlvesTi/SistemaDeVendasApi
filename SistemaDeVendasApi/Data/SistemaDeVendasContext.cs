@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaDeVendasApi.Models.Cliente;
+using SistemaDeVendasApi.Models.ClienteModels;
+using SistemaDeVendasApi.Models.ProdutoModels;
+using SistemaDeVendasApi.Models.VendaModels;
 
 namespace SistemaDeVendasApi.Data
 {
@@ -11,5 +13,8 @@ namespace SistemaDeVendasApi.Data
         }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
+        public DbSet<ItemVenda> ItensVenda { get; set; }
     }
 }

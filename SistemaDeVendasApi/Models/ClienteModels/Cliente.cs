@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace SistemaDeVendasApi.Models.Cliente
+namespace SistemaDeVendasApi.Models.ClienteModels
 {
     public class Cliente
     {

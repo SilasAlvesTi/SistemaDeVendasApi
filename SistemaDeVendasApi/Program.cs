@@ -18,6 +18,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<ClienteRepository>();
 builder.Services.AddScoped<ClienteService>();
+builder.Services.AddScoped<ProdutoRepository>();
+builder.Services.AddScoped<ProdutoService>();
 
 var app = builder.Build();
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SistemaDeVendasApi.Models.Cliente;
+using SistemaDeVendasApi.Models.ClienteModels;
 using SistemaDeVendasApi.Repositories;
 
 namespace SistemaDeVendasApi.Services

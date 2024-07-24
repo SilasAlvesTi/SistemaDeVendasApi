@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SistemaDeVendasApi.Data;
-using SistemaDeVendasApi.Models.Cliente;
-using SistemaDeVendasApi.Repositories;
+using SistemaDeVendasApi.Models.ClienteModels;
 using SistemaDeVendasApi.Services;
-using System.Numerics;
 
 namespace SistemaDeVendasApi.EndPoints.ClienteEndPoints
 {
