@@ -17,7 +17,7 @@ namespace SistemaDeVendasApi.Models.VendaModels
         public Cliente Cliente { get; set; }
 
         [Required]
-        public DateTime DataVenda { get; set; }
+        public DateTime DataVenda { get; set; } = DateTime.Now;
 
         [Required]
         [Column(TypeName = "decimal(10, 2)")]

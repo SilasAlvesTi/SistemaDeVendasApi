@@ -3,6 +3,7 @@ using SistemaDeVendasApi.Data;
 using SistemaDeVendasApi.EndPoints.ClienteEndPoints;
 using SistemaDeVendasApi.Repositories;
 using SistemaDeVendasApi.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,11 +16,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+   x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
 builder.Services.AddScoped<ClienteRepository>();
 builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<ProdutoRepository>();
 builder.Services.AddScoped<ProdutoService>();
+builder.Services.AddScoped<VendaRepository>();
+builder.Services.AddScoped<VendaService>();
+builder.Services.AddScoped<ItemVendaRepository>();
 
 var app = builder.Build();
 
