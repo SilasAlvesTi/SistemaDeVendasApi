@@ -16,9 +16,10 @@ namespace SistemaDeVendasApi.Services
             _itemVendaRepository = itemVendaRepository;
         }
 
-        public async Task<IEnumerable<Venda>> GetAllVendasAsync()
+        public async Task<IEnumerable<VendaListagemDTO>> GetAllVendasAsync()
         {
-            return await _vendaRepository.GetAllAsync();
+            var vendas = await _vendaRepository.GetAllAsync();
+            return vendas.Select(ToDTO).ToList();
         }
 
         public async Task<Venda> AdicionarVendaAsync(VendaAdicionarDTO vendaAdicionarDTO)
@@ -112,6 +113,42 @@ namespace SistemaDeVendasApi.Services
 
             }
             venda.ValorTotal = total;
+        }
+
+        public VendaListagemDTO ToDTO(Venda venda)
+        {
+            return new VendaListagemDTO(
+                venda.VendaID,
+                venda.ClienteID,
+                venda.DataVenda,
+                venda.ValorTotal,
+                venda.ItensVenda.Select(iv => new ItemVendaListagemDTO(
+                    iv.ItemVendaID,
+                    iv.VendaID,
+                    iv.ProdutoID,
+                    iv.Quantidade,
+                    iv.PrecoUnitario
+                )).ToList()
+            );
+        }
+
+        public Venda ToEntity(VendaListagemDTO dto)
+        {
+            return new Venda
+            {
+                VendaID = dto.VendaID,
+                ClienteID = dto.ClienteID,
+                DataVenda = dto.DataVenda,
+                ValorTotal = dto.ValorTotal,
+                ItensVenda = dto.ItensVenda.Select(iv => new ItemVenda
+                {
+                    ItemVendaID = iv.ItemVendaID,
+                    VendaID = iv.VendaID,
+                    ProdutoID = iv.ProdutoID,
+                    Quantidade = iv.Quantidade,
+                    PrecoUnitario = iv.PrecoUnitario
+                }).ToList()
+            };
         }
 
     }

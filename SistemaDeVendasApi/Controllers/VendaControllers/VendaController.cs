@@ -17,7 +17,7 @@ namespace SistemaDeVendasApi.Controllers.VendaControllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Venda>>> GetVendas()
+        public async Task<ActionResult<IEnumerable<VendaListagemDTO>>> GetVendas()
         {
             return Ok(await _vendaService.GetAllVendasAsync());
         }
